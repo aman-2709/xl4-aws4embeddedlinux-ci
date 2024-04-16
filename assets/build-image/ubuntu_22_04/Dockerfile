@@ -38,7 +38,7 @@ ENV BB_ENV_PASSTHROUGH_ADDITIONS="SSTATE_DIR DL_DIR"
 USER yoctouser
 
 # Set up Git configuration to use the token
-ARG GIT_PAT
-RUN git config --global credential.helper 'store' && \
-    echo "https://x-access-token:${GIT_PAT}@github.com" > ~/.git-credentials
+#ARG GIT_PAT
+#RUN git config --global credential.helper 'store' && \
+#    echo "https://x-access-token:${GIT_PAT}@github.com" > ~/.git-credentials
 

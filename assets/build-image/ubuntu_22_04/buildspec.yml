@@ -9,8 +9,12 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - docker build --build-arg GIT_PAT=$GIT_PAT -t ubuntu_22_04:$IMAGE_TAG ubuntu_22_04
+      - docker build -t ubuntu_22_04:$IMAGE_TAG ubuntu_22_04
       - docker tag ubuntu_22_04:$IMAGE_TAG $ECR_REPOSITORY_URI:$IMAGE_TAG
+  install:
+    commands:
+      - git config --global credential.helper '!aws codecommit credential-helper $@'
+      - git config --global credential.UseHttpPath true
   post_build:
     commands:
       - echo Build completed on `date`
